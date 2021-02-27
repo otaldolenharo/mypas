@@ -1,0 +1,26 @@
+ifstmt -> IF expr THEN stmt [ ELSE stmt ]
+
+Semantic rule for pseudo-assembly:
+
+
+ifstmt -> IF expr THEN		||	<expr>.as
+				||	gofalse .ENDIF | .ELSE
+		stmt¹		||	<stmt¹>.as
+				||
+		[		||[     goto .ENDIF
+	           ELSE 	||.ELSE:
+		   stmt² 	||	<stmt²>.as
+		        ]	||		  ]
+				||.ENDIF:
+
+
+ifstmt -> IF expr THEN		||	<expr>.as
+				||	gofalse .L1
+		stmt¹		||	<stmt¹>.as
+				||
+		[		||[     goto .ENDIF
+	           ELSE 	||.L1:
+		   stmt² 	||	<stmt²>.as
+		        ]	||		  ]
+				||.L1 | .L2:
+

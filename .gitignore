@@ -1,3 +1,6 @@
 # Ignores vim swap files
 *.swp
 
+# Ignores output assembly files
+*.s
+
