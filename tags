@@ -4,3 +4,120 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AND	include/keywords.h	/^    AND,$/;"	e	enum:keywords
+ASGN	include/tokens.h	/^	ASGN, \/* ASGN = ":=" (pascal)*\/$/;"	e	enum:__anon2
+BEGIN	include/keywords.h	/^    BEGIN = 10001,$/;"	e	enum:keywords
+BOOL	include/constants.h	/^	BOOL,$/;"	e	enum:__anon1
+BOOL	include/types.h	/^    BOOL = 1,$/;"	e	enum:__anon3
+BOOLEAN	include/keywords.h	/^    BOOLEAN,    $/;"	e	enum:keywords
+CFLAGS	Makefile	/^CFLAGS = -g -I.\/include$/;"	m
+DIV	include/keywords.h	/^    DIV,$/;"	e	enum:keywords
+DO	include/keywords.h	/^    DO,$/;"	e	enum:keywords
+DOUBLE	include/keywords.h	/^    DOUBLE,$/;"	e	enum:keywords
+ELSE	include/keywords.h	/^    ELSE,$/;"	e	enum:keywords
+END	include/keywords.h	/^    END,$/;"	e	enum:keywords
+FLOAT	include/tokens.h	/^	FLOAT,$/;"	e	enum:__anon2
+FLT32	include/constants.h	/^	FLT32,$/;"	e	enum:__anon1
+FLT32	include/types.h	/^    FLT32, $/;"	e	enum:__anon3
+FLT64	include/constants.h	/^	FLT64,$/;"	e	enum:__anon1
+FLT64	include/types.h	/^    FLT64, $/;"	e	enum:__anon3
+FUNCTION	include/keywords.h	/^    FUNCTION,$/;"	e	enum:keywords
+GEQ	include/tokens.h	/^	GEQ, \/* GEQ = '>=' *\/$/;"	e	enum:__anon2
+HEX	include/tokens.h	/^	HEX,$/;"	e	enum:__anon2
+ID	include/tokens.h	/^	ID = 1024,$/;"	e	enum:__anon2
+IF	include/keywords.h	/^    IF,$/;"	e	enum:keywords
+INCOMPTBL	include/constants.h	/^	INCOMPTBL = -1,$/;"	e	enum:__anon1
+INT32	include/constants.h	/^	INT32,$/;"	e	enum:__anon1
+INT32	include/types.h	/^    INT32, $/;"	e	enum:__anon3
+INT64	include/constants.h	/^	INT64,$/;"	e	enum:__anon1
+INT64	include/types.h	/^    INT64, $/;"	e	enum:__anon3
+INTEGER	include/keywords.h	/^    INTEGER,$/;"	e	enum:keywords
+LEQ	include/tokens.h	/^	LEQ, \/* GEQ = '<=' *\/$/;"	e	enum:__anon2
+MAXIDLEN	include/constants.h	2;"	d
+MAXSTBSIZE	include/constants.h	3;"	d
+MOD	include/keywords.h	/^    MOD,$/;"	e	enum:keywords
+NEQ	include/tokens.h	/^	NEQ, \/* NEQ = '<>=' *\/$/;"	e	enum:__anon2
+NOT	include/keywords.h	/^    NOT,$/;"	e	enum:keywords
+OCT	include/tokens.h	/^	OCT,$/;"	e	enum:__anon2
+OR	include/keywords.h	/^    OR,$/;"	e	enum:keywords
+PROCEDURE	include/keywords.h	/^    PROCEDURE,$/;"	e	enum:keywords
+PROGRAM	include/keywords.h	/^    PROGRAM,$/;"	e	enum:keywords
+REAL	include/keywords.h	/^    REAL,$/;"	e	enum:keywords
+REPEAT	include/keywords.h	/^    REPEAT,$/;"	e	enum:keywords
+RETURN	include/keywords.h	/^    RETURN,$/;"	e	enum:keywords
+SYMTAB	include/symtab.h	/^SYMTAB;$/;"	t	typeref:struct:__symtab__
+THEN	include/keywords.h	/^    THEN,$/;"	e	enum:keywords
+UINT	include/tokens.h	/^	UINT,$/;"	e	enum:__anon2
+UNTIL	include/keywords.h	/^    UNTIL,$/;"	e	enum:keywords
+VAR	include/keywords.h	/^    VAR,$/;"	e	enum:keywords
+VOID	include/constants.h	/^	VOID,$/;"	e	enum:__anon1
+WHILE	include/keywords.h	/^    WHILE,$/;"	e	enum:keywords
+__symtab__	include/symtab.h	/^struct __symtab__ {$/;"	s
+add	pseudocode.c	/^void add(int type)$/;"	f
+cmp	pseudocode.c	/^void cmp(int type) {$/;"	f
+columcounter	lexer.c	/^int columcounter = 1;$/;"	v
+data_size	include/symtab.h	/^	int data_size;$/;"	m	struct:__symtab__
+declarative	parser.c	/^void declarative(void) $/;"	f
+divl	pseudocode.c	/^void divl(int type)$/;"	f
+expr	parser.c	/^int expr(int expr_type)$/;"	f
+fact	parser.c	/^int fact(int fact_type) $/;"	f
+fact	teste.pas	/^	function fact(n: integer): integer;$/;"	f
+formparm	parser.c	/^void formparm(void)$/;"	f
+gettoken	lexer.c	/^int gettoken ( FILE *source )$/;"	f
+gofalse	pseudocode.c	/^void gofalse(int loopnumber) $/;"	f
+golabel	pseudocode.c	/^void golabel(int looknumber) $/;"	f
+ifstmt	parser.c	/^void ifstmt(void)$/;"	f
+imperative	parser.c	/^void imperative(void)$/;"	f
+isASGN	lexer.c	/^int isASGN(FILE *tape)$/;"	f
+isHEX	lexer.c	/^int isHEX(FILE *tape)$/;"	f
+isID	lexer.c	/^int isID (FILE *tape)$/;"	f
+isNUM	lexer.c	/^int isNUM(FILE *tape)$/;"	f
+isOCT	lexer.c	/^int isOCT(FILE *tape)$/;"	f
+isRELOP	lexer.c	/^int isRELOP(FILE *tape) $/;"	f
+isUINT	lexer.c	/^int isUINT (FILE *tape)$/;"	f
+iscompat	parser.c	/^int iscompat(int acc_type, int syn_type)$/;"	f
+iskeyword	keywords.c	/^int iskeyword(const char *name){$/;"	f
+isrelop	parser.c	/^int isrelop(void)$/;"	f
+keywords	include/keywords.h	/^enum keywords{$/;"	g
+keywords	keywords.c	/^char *keywords[] = {$/;"	v
+lexeme	lexer.c	/^char lexeme[MAXIDLEN+1];$/;"	v
+lexical_level	include/symtab.h	/^	int lexical_level;$/;"	m	struct:__symtab__
+lexicallevel	parser.c	/^\/**\/ int lexicallevel = 0; \/**\/$/;"	v
+linecounter	lexer.c	/^int linecounter = 1;$/;"	v
+lookahead	lexer.c	/^int lookahead;$/;"	v
+loop_count	parser.c	/^\/**\/int loop_count = 1;\/**\/$/;"	v
+main	mypas.c	/^int main (int argc, char const *argv[])$/;"	f
+match	parser.c	/^void match(int expected)$/;"	f
+mklabel	pseudocode.c	/^void mklabel(int loopnumber)$/;"	f
+move	pseudocode.c	/^void move(int type, const char *src, const char *dest)$/;"	f
+mul	pseudocode.c	/^void mul(int type)$/;"	f
+mypas	parser.c	/^void mypas(void) $/;"	f
+negate	pseudocode.c	/^void negate(int type)$/;"	f
+objtype	include/symtab.h	/^	int objtype;$/;"	m	struct:__symtab__
+objtype	parser.c	/^\/**\/ int objtype; \/**\/ $/;"	v
+offset	include/symtab.h	/^	char offset[MAXIDLEN+1]; \/* Representar variaveis de niveis diferentes *\/$/;"	m	struct:__symtab__
+push	pseudocode.c	/^void push(int type)$/;"	f
+rptstmt	parser.c	/^void rptstmt(void)$/;"	f
+rtrn	parser.c	/^void rtrn(void)$/;"	f
+sbpdecl	parser.c	/^void sbpdecl(void)$/;"	f
+semantic_error	parser.c	/^\/**\/int semantic_error = 0;\/**\/$/;"	v
+skipunused	lexer.c	/^void skipunused ( FILE *tape )$/;"	f
+smpexpr	parser.c	/^int smpexpr(int smpexpr_type) $/;"	f
+source	mypas.c	/^FILE *source;$/;"	v
+stmt	parser.c	/^void stmt(void)$/;"	f
+sub	pseudocode.c	/^void sub(int type)$/;"	f
+symbol	include/symtab.h	/^	char symbol[MAXIDLEN+1];$/;"	m	struct:__symtab__
+symtab	symtab.c	/^SYMTAB symtab[MAXSTBSIZE];$/;"	v
+symtab_append	symtab.c	/^int symtab_append(const char *symbol, int lexical_level, int objtype, int transp_type) {$/;"	f
+symtab_entry	symtab.c	/^int symtab_entry; \/\/cursor, marca a entrda atual$/;"	v
+symtab_lookup	symtab.c	/^int symtab_lookup(const char *symbol)$/;"	f
+symtab_next_entry	symtab.c	/^int symtab_next_entry = 0;$/;"	v
+symtab_update_type	symtab.c	/^void symtab_update_type(int start, int type) $/;"	f
+term	parser.c	/^int term(int term_type)$/;"	f
+transp_type	include/symtab.h	/^	int transp_type;$/;"	m	struct:__symtab__
+transp_type	parser.c	/^\/**\/ int transp_type; \/**\/$/;"	v
+type	include/symtab.h	/^	int type;$/;"	m	struct:__symtab__
+typemod	parser.c	/^int typemod(void)$/;"	f
+vardecl	parser.c	/^void vardecl(void)$/;"	f
+varlist	parser.c	/^void varlist(void)$/;"	f
+whlstmt	parser.c	/^void whlstmt(void)$/;"	f

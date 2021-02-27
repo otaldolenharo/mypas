@@ -13,10 +13,11 @@ SYMTAB symtab[MAXSTBSIZE];
 int symtab_next_entry = 0;
 int symtab_lookup(const char *symbol)
 {
-    for (symtab_entry = symtab_next_entry - 1; symtab_entry > -1; symtab_entry--) {
-        if (strcmp(symtab[symtab_entry].symbol, symbol) == 0) return symtab_entry;
-    }
-    return symtab_entry = -1;
+	int i;
+	for (i = symtab_next_entry - 1; i > -1; i--) {
+		if (strcmp(symtab[i].symbol, symbol) == 0) return i;
+	}
+	return i;
 }
 
 int symtab_entry; //cursor, marca a entrda atual

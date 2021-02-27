@@ -22,12 +22,13 @@ void skipunused ( FILE *tape )
 		if (head == '\n') linecounter++;
 	}
 	
-	if ( (head = getc(tape)) == '{') {
+	if ( (head == '{') ) {
 		while((head = getc(tape)) != '}' && (head != EOF)) {
 			if (head == '\n') linecounter++;
 		}
 		if (head == '}') { goto _skip_spaces_head; }
 	}	
+
 	ungetc ( head, tape );
 }
 
@@ -108,6 +109,7 @@ int isUINT (FILE *tape)
  *
  * eE = [eE] ['+''-']? [0-9]+
  */
+
 int isNUM(FILE *tape)
 {
 	int i = 0;
@@ -338,18 +340,18 @@ int gettoken ( FILE *source )
 
 	if ( ( token = isID(source) ) ) return token;
 
-	if ( ( token = isOCT(source) ) ) return token;
+	/* if ( ( token = isOCT(source) ) ) return token; */
 
-	if ( ( token = isHEX(source) ) ) return token;
+	/* if ( ( token = isHEX(source) ) ) return token; */
 
 	if ( ( token = isNUM(source) ) ) return token;
 
-	if ( ( token = isRELOP(source) ) ) return token;
+	/* if ( ( token = isRELOP(source) ) ) return token; */
 
 	if ( ( token = isASGN(source) ) ) return token;
 	
 	lexeme[1] = 0;
-	token = lexeme[0] = getc (source);
+	token = lexeme[0] = getc(source);
 	
 	return token;
 }

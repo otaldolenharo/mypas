@@ -4,3 +4,6 @@
 # Ignores output assembly files
 *.s
 
+# Ignores object files
+*.o
+

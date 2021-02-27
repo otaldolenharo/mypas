@@ -9,7 +9,7 @@ char *keywords[] = {
     "div",
     "mod",
     "program",
-    "procudure",
+    "procedure",
     "function",
     "return",
     "var",

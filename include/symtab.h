@@ -18,7 +18,7 @@ struct __symtab__ {
 SYMTAB;
 
 //int symtab_rtrvtype(const char *, int);
-int symtab_lookup(const char *, int);
+int symtab_lookup(const char *);
 int symtab_append(const char *symbol, int lexical_level, int objtype, int transp_type) ;
 void symtab_update_type(int start, int type);
 
