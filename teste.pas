@@ -16,7 +16,7 @@ program Teste;
 				m := n * fact(n - 1)
 			else
 				m := n
-			return m;
+			return m {isso não existe em Pascal de verdade}
 		end;
 
 	{ end declarative scope }

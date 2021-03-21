@@ -117,7 +117,6 @@ int isNUM(FILE *tape)
 	int head;
 
 	if ( ( token = isUINT(tape) ) ) {
-
 		if ( ( lexeme[i] = getc(tape) ) == '.' ) {
 			i++;
 			token = FLOAT;
@@ -146,7 +145,7 @@ int isNUM(FILE *tape)
 		}
 	} else {
 		ungetc (lexeme[i], tape);
-		lexeme[i] = 0;
+		lexeme[i] = 0; 
 	}
 	if ( token ) {
 		int eE;
@@ -277,7 +276,7 @@ int isHEX(FILE *tape)
 /* ASGN = ":=" (pascal)*/
 int isASGN(FILE *tape)
 {
-	if ( lexeme[0] = getc(tape) == ':') { 
+	if ( (lexeme[0] = getc(tape)) == ':') { 
 		if ( lexeme[1] = getc(tape) == '=' ) {
 			lexeme[2] = 0;
 			return ASGN; // foi encontrado :=
@@ -340,13 +339,13 @@ int gettoken ( FILE *source )
 
 	if ( ( token = isID(source) ) ) return token;
 
-	/* if ( ( token = isOCT(source) ) ) return token; */
+	if ( ( token = isOCT(source) ) ) return token;
 
-	/* if ( ( token = isHEX(source) ) ) return token; */
+	if ( ( token = isHEX(source) ) ) return token;
 
 	if ( ( token = isNUM(source) ) ) return token;
 
-	/* if ( ( token = isRELOP(source) ) ) return token; */
+	if ( ( token = isRELOP(source) ) ) return token;
 
 	if ( ( token = isASGN(source) ) ) return token;
 	

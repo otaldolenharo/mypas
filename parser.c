@@ -91,7 +91,7 @@ void vardecl(void)
 		match(':');
 		/**/int type = /**/typemod();
 		/**/symtab_update_type(first_pos, type);/**/
-		match(';');
+		match(';'); //AQUI
 		if (lookahead == ID) { goto _varlist_head; }
 	} else {
 		;
@@ -319,7 +319,10 @@ int expr(int expr_type)
 
 		/**/right_type = /**/smpexpr(left_type);
 		/**/left_type = iscompat(left_type, right_type);/**/
-		/**/if (left_type > 0) return expr_type;/**/
+		/**/if (left_type > 0) {
+				cmp(relop, left_type, "aux", "acc");
+				return expr_type;
+			}/**/
 	} else {
 		/**/expr_type = iscompat(expr_type, left_type);/**/
 	}

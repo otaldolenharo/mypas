@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <types.h>
+#include <tokens.h>
 
 //precisa mudar aqui
 //onde aparece nome, é pra trabalhor com o offset da variavel ou índice da variavel na tabela de simbolos
@@ -147,26 +148,53 @@ void divl(int type)
     }
 }
 
-void cmp(int type) {
+void cmp(int relop, int type, char *aux, char *acc) {
 
+    char *suffix, *instr;
     switch(type) { 
         case BOOL:
-            
+            suffix = "b";
+            break;
         case INT32:
-            printf("\tcmpl auxl\n");
+            suffix = "l";
             break;
         case INT64:
-            printf("\tcmpl auxq\n");
+            suffix = "q";
             break;
         case FLT32:
-            printf("\tdcmpl auxf\n");
+            suffix = "f";
             break;
         case FLT64:
-            printf("\tcmpl auxl\n");
+            suffix = "df";
             break;
         default:
             ;
     }
+    switch (relop){
+    
+        case '>':
+            instr = "gt";
+            break;
+        case '<':
+            instr = "lt";
+            break;
+        case '=':
+            instr = "eq";
+            break;
+        case NEQ:
+            instr = "neq";
+            break;
+        case LEQ:
+            instr = "leq";
+            break;
+        case GEQ:
+            instr = "geq";
+            break;
+        default:
+            ;
+    }
+
+    printf("\t%s%s %s%s, %s%s\n", instr,suffix, aux,suffix, acc,suffix);
 }
 
 void gofalse(int loopnumber) 
