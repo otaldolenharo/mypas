@@ -89,7 +89,7 @@ void vardecl(void)
 		/**/first_pos = symtab_next_entry;/**/
 		varlist();
 		match(':');
-		/**/int type = /**/typemod();
+		/**/int type = /**/typemod(); //TYPEMOD DANDO PAU
 		/**/symtab_update_type(first_pos, type);/**/
 		match(';'); //AQUI
 		if (lookahead == ID) { goto _varlist_head; }
@@ -115,17 +115,17 @@ int typemod(void)
 {
 	/**/int type;/**/
 	switch (lookahead) {
-	case INTEGER:
-		/**/type = INT32;/**/
-		break;
-	case REAL:
-		/**/type = FLT32;/**/
-		break;
-	case DOUBLE:
-		/**/type = FLT64;/**/
-		break;
-	default:
-		/**/type = BOOL;/**/
+		case INTEGER:
+			/**/type = INT32;/**/
+			break;
+		case REAL:
+			/**/type = FLT32;/**/
+			break;
+		case DOUBLE:
+			/**/type = FLT64;/**/
+			break;
+		default:
+			/**/type = BOOL;/**/
 	}
 	match(lookahead);
 	return type;
