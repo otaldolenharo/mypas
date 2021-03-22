@@ -46,11 +46,11 @@ int isID (FILE *tape)
 {
 	int i = 0;
 
-	if ( isalpha ( lexeme[i] = getc (tape) ) ) {
+	if ( isalpha ( (lexeme[i] = getc (tape)) ) ) {
 
 		i++;
 
-		while ( isalnum ( lexeme[i] = getc (tape) ) ) {
+		while ( isalnum ( (lexeme[i] = getc (tape)) ) ) {
 			if (i < MAXIDLEN) i++;
 		}
 
@@ -58,7 +58,7 @@ int isID (FILE *tape)
 
 		lexeme[i] = 0;
 		int key = iskeyword(lexeme);
-		if (key) return key;
+		if (key) return key; //AQUI
 		return ID;
 	}
 
@@ -77,13 +77,13 @@ int isUINT (FILE *tape)
 {
 	int i = 0;
 
-	if ( isdigit ( lexeme[i] = getc (tape) ) ) {
+	if ( isdigit ( (lexeme[i] = getc (tape)) ) ) {
 
 		i++;
 
 		if ( lexeme[i] != '0' ) {
 
-			while ( isdigit ( lexeme[i] = getc (tape) ) ) {
+			while ( isdigit ( (lexeme[i] = getc (tape)) ) ) {
 				if (i < MAXIDLEN) i++;
 			}
 
@@ -196,11 +196,11 @@ int isOCT(FILE *tape)
 
 		i++;
 
-		if ( isdigit(lexeme[i] = getc(tape)) && lexeme[i] < '8' ) {
+		if ( isdigit((lexeme[i] = getc(tape))) && lexeme[i] < '8' ) {
 
 			i++;
 
-			while ( isdigit(lexeme[i] = getc(tape)) && lexeme[i] < '8' ){
+			while ( isdigit((lexeme[i] = getc(tape))) && lexeme[i] < '8' ){
 				if (i < MAXIDLEN) i++;
 			}
 
@@ -241,11 +241,11 @@ int isHEX(FILE *tape)
 
 		if ( toupper(x = getc(tape)) == 'X' ) {
 
-			if ( isxdigit(lexeme[i] = getc(tape)) ) {
+			if ( isxdigit((lexeme[i] = getc(tape))) ) {
 				
 				i++;
 
-				while ( isxdigit(lexeme[i]= getc(tape)) ) {
+				while ( isxdigit((lexeme[i]= getc(tape))) ) {
 					if (i < MAXIDLEN) i++;
 				}
 
@@ -277,7 +277,7 @@ int isHEX(FILE *tape)
 int isASGN(FILE *tape)
 {
 	if ( (lexeme[0] = getc(tape)) == ':') { 
-		if ( lexeme[1] = getc(tape) == '=' ) {
+		if ( (lexeme[1] = getc(tape)) == '=' ) {
 			lexeme[2] = 0;
 			return ASGN; // foi encontrado :=
 		}
@@ -291,7 +291,7 @@ int isASGN(FILE *tape)
 int isRELOP(FILE *tape) 
 {
 	int i = 0;
-	switch(lexeme[i] = getc(tape)) {
+	switch((lexeme[i] = getc(tape))) {
 		case '=':
 			i++;
 			lexeme[i] = 0;
@@ -299,7 +299,7 @@ int isRELOP(FILE *tape)
 			break;
 		case '>':
 			i++;
-			if ( (lexeme[i] = getc(tape) == '=') ) {
+			if ( ((lexeme[i] = getc(tape)) == '=') ) {
 				i++;
 				lexeme[i] = 0;
 				return GEQ;
@@ -310,7 +310,7 @@ int isRELOP(FILE *tape)
 			break;
 		case '<':
 			i++;
-			if ( (lexeme[i] = getc(tape) == '=') ) {
+			if ( ((lexeme[i] = getc(tape)) == '=') ) {
 				i++;
 				lexeme[i] = 0;
 				return LEQ;
@@ -352,5 +352,6 @@ int gettoken ( FILE *source )
 	lexeme[1] = 0;
 	token = lexeme[0] = getc(source);
 	
+	skipunused(source);
 	return token;
 }
