@@ -1,9 +1,22 @@
+/**@<pseudocode.c>::**/
+
+/**
+ * This is the Intermediate Pseudocode Generator of the MyPas Language Compiler 
+ * it was developed by:
+ * 
+ * Daniel Hideki Kawabata
+ * Gabriel Lenharo da Cunha
+ * 
+ * Supervised by Professor Eraldo Pereira Marinho
+**/
+
 #include <stdio.h>
 #include <types.h>
 #include <tokens.h>
 
-//precisa mudar aqui
-//onde aparece nome, é pra trabalhor com o offset da variavel ou índice da variavel na tabela de simbolos
+/**
+ * Negates the content of accumulator register
+**/
 void negate(int type)
 {
     switch(type) { 
@@ -27,6 +40,11 @@ void negate(int type)
     }
 }
 
+/**
+ * Moves the content between two addresses in pseudocode.
+ * 
+ * Usually used in assignment
+**/
 void move(int type, const char *src, const char *dest)
 {
     switch(type) { 
@@ -49,6 +67,10 @@ void move(int type, const char *src, const char *dest)
             ;
     }
 }
+
+/**
+ * Pushes the value to the stack
+**/
 void push(int type)
 {
     switch(type) { 
@@ -71,6 +93,10 @@ void push(int type)
             ;
     }
 }
+
+/**
+ * Adds the content of aux register to the accumulator register
+**/
 void add(int type)
 {
     switch(type) { 
@@ -90,6 +116,10 @@ void add(int type)
             ;
     }
 }
+
+/**
+ * Subtracts the content of aux register to the accumulator register
+**/
 void sub(int type)
 {
     switch(type) { 
@@ -109,6 +139,10 @@ void sub(int type)
             ;
     }
 }
+
+/**
+ * Multiply the content of aux register by the content accumulator register
+**/
 void mul(int type)
 {
     switch(type) { 
@@ -128,6 +162,10 @@ void mul(int type)
             ;
     }
 }
+
+/**
+ * Divides the content of aux register by the content of accumulator register
+**/
 void divl(int type)
 {
     switch(type) { 
@@ -148,6 +186,9 @@ void divl(int type)
     }
 }
 
+/**
+ * Compares the content of *aux and *acc
+**/
 void cmp(int relop, int type, char *aux, char *acc) {
 
     char *suffix, *instr;
@@ -197,16 +238,26 @@ void cmp(int relop, int type, char *aux, char *acc) {
     printf("\t%s%s %s%s, %s%s\n", instr,suffix, aux,suffix, acc,suffix);
 }
 
+/**
+ * Makes the program go to some label in case of 
+ * boolean comparison results in false
+**/
 void gofalse(int loopnumber) 
 {
     printf("\tgofalse .L%d\n", loopnumber);
 }
 
+/**
+ * Creates a label
+**/
 void mklabel(int loopnumber)
 {
     printf(".L%d:\n", loopnumber);
 }
 
+/**
+ * Forces the program go to some label
+**/
 void golabel(int looknumber) 
 {
 printf("\tgoto .L%d\n", looknumber);

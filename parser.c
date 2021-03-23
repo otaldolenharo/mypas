@@ -89,7 +89,7 @@ void vardecl(void)
 		/**/first_pos = symtab_next_entry;/**/
 		varlist();
 		match(':');
-		/**/int type = /**/typemod();
+		/**/int type = /**/typemod(); //TYPEMOD DANDO PAU
 		/**/symtab_update_type(first_pos, type);/**/
 		match(';'); //AQUI
 		if (lookahead == ID) { goto _varlist_head; }
@@ -115,17 +115,17 @@ int typemod(void)
 {
 	/**/int type;/**/
 	switch (lookahead) {
-	case INTEGER:
-		/**/type = INT32;/**/
-		break;
-	case REAL:
-		/**/type = FLT32;/**/
-		break;
-	case DOUBLE:
-		/**/type = FLT64;/**/
-		break;
-	default:
-		/**/type = BOOL;/**/
+		case INTEGER:
+			/**/type = INT32;/**/
+			break;
+		case REAL:
+			/**/type = FLT32;/**/
+			break;
+		case DOUBLE:
+			/**/type = FLT64;/**/
+			break;
+		default:
+			/**/type = BOOL;/**/
 	}
 	match(lookahead);
 	return type;
@@ -163,7 +163,7 @@ void sbpdecl(void)
 			match(';');
 			declarative(); 
 			imperative(); 
-			/**/ lexicallevel--; /**/
+//			/**/ lexicallevel--; /**/
 			/**/symtab_next_entry = symtab_sentinel; /**/
 			//precisa voltar para o inicio, na posição inicla da tablee ade simbolos
 			match(';'); 
@@ -208,7 +208,7 @@ void imperative(void)
 	stmt_list:
 	stmt();
 	if (lookahead == ';') { match(';'); goto stmt_list; }
-	match(END);
+	match(END); //TODO: implementar return
 }
 /*****************************************************************************
  * stmt -> imperative | ifstmt | whlstmt | rptstmt | fact | <empty>
@@ -442,7 +442,7 @@ int fact(int fact_type)
                 /**** L-Value ****/
                 match(ASGN); /***/expr_type = /***/expr(fact_type);
                 /**/
-                if ( symtab_lookup(name) < 0 ) {
+                if ( symtab_lookup(name, lexicallevel) < 0 ) {
                     fprintf(stderr, "%s undeclared\n", name);
                     semantic_error++;
                 } else {
@@ -459,7 +459,8 @@ int fact(int fact_type)
             } else {
                 /**** R-Value ****/
                 /**/
-                if ( symtab_lookup(name) < 0 ) {
+//				int typevar = symtab_rtrvtype(name, lexicallevel);
+                if ( symtab_lookup(name, lexicallevel) < 0 ) {
                     fprintf(stderr, "%s undeclared\n", name);
                     semantic_error++;
                 } else {
@@ -489,13 +490,166 @@ int fact(int fact_type)
     return fact_type;
 }
 
+void abcasdf(int token)
+{
+	if ((token > (-2)) && (token < 6)) {
+		//This is related to what it's in constants.h
+		switch (token) {
+			case 0:
+				fprintf(stderr, "VOID");
+				break;
+			case 1:
+				fprintf(stderr, "BOOL");
+				break;
+			case 2:
+				fprintf(stderr, "INT32");
+				break;
+			case 3:
+				fprintf(stderr, "INT64");
+				break;
+			case 4:
+				fprintf(stderr, "FLT32");
+				break;
+			case 5:
+				fprintf(stderr, "FLT64");
+				break;
+			default:
+				fprintf(stderr, "INCOMPTBL");
+				break;
+
+		}
+	} else if ((token > 1023) && (token < 1032)) {
+		//This is related to tokens.h values
+		switch (token) {
+			case 1025:
+				fprintf(stderr, "UINT");
+				break;
+			case 1026:
+				fprintf(stderr, "FLOAT");
+				break;
+			case 1027:
+				fprintf(stderr, "OCT");
+				break;
+			case 1028:
+				fprintf(stderr, "HEX");
+				break;
+			case 1029:
+				fprintf(stderr, "ASGN");
+				break;
+			case 1030:
+				fprintf(stderr, "GEQ");
+				break;
+			case 1031:
+				fprintf(stderr, "LEQ");
+				break;
+			case 1032:
+				fprintf(stderr, "NEQ");
+				break;
+			default:
+				fprintf(stderr, "ID");
+				break;
+		}
+	} else if (token > 10000) {
+		switch (token) {
+			case 10002:
+				fprintf(stderr, "NOT");
+				break;
+			case 10003:
+				fprintf(stderr, "OR");
+				break;
+			case 10004:
+				fprintf(stderr, "AND");
+				break;
+			case 10005:
+				fprintf(stderr, "DIV");
+				break;
+			case 10006:
+				fprintf(stderr, "MOD");
+				break;
+			case 10007:
+				fprintf(stderr, "PROGRAM");
+				break;
+			case 10008:
+				fprintf(stderr, "PROCEDURE");
+				break;
+			case 10009:
+				fprintf(stderr, "FUNCTION");
+				break;
+			case 10010:
+				fprintf(stderr, "RETURN");
+				break;
+			case 10011:
+				fprintf(stderr, "VAR");
+				break;
+			case 10012:
+				fprintf(stderr, "INTEGER");
+				break;
+			case 10013:
+				fprintf(stderr, "REAL");
+				break;
+			case 10014:
+				fprintf(stderr, "DOUBLE");
+				break;
+			case 10015:
+				fprintf(stderr, "BOOLEAN");
+				break;
+			case 10016:
+				fprintf(stderr, "IF");
+				break;
+			case 10017:
+				fprintf(stderr, "THEN");
+				break;
+			case 10018:
+				fprintf(stderr, "ELSE");
+				break;
+			case 10019:
+				fprintf(stderr, "WHILE");
+				break;
+			case 10020:
+				fprintf(stderr, "DO");
+				break;
+			case 10021:
+				fprintf(stderr, "REPEATE");
+				break;
+			case 10022:
+				fprintf(stderr, "UNTIL");
+				break;
+			case 10023:
+				fprintf(stderr, "END");
+				break;
+			default:
+				fprintf(stderr, "BEGIN");
+				break;
+		}
+	} else {
+		//Do a ascii conversion to print on error message
+		fprintf(stderr, "%c", token);
+	}
+}
+
 void match(int expected)
 {
 	if (lookahead == expected) {
 		lookahead = gettoken(source);
 	} else {
-		fprintf(stderr, "token mismatch: expected %d whereas found %d\n",
-			expected, lookahead);
+		fprintf(stderr, "token mismatch: expected "); 
+		abcasdf(expected); 
+		fprintf(stderr, " whereas found "); 
+		abcasdf(lookahead);  
+		fprintf(stderr, " at line %d column %d\n", linecounter, columcounter);
 		exit(-2);
 	}
 }
+
+/*
+void match(int expected)
+{
+	if (lookahead == expected) {
+		lookahead = gettoken(source);
+	} else {
+		fprintf(stderr, "token mismatch: expected %c whereas found %c at line %d column %d\n",
+			expected, lookahead, linecounter, columcounter); //TODO: converter numero pra algarismo
+		exit(-2);
+	}
+}
+*/

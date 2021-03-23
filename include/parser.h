@@ -35,3 +35,6 @@ int expr(int);
 int smpexpr(int);
 int term(int);
 int fact(int);
+
+extern int linecounter;
+extern int columcounter;
