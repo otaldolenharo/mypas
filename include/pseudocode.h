@@ -10,3 +10,4 @@ void divl(int type);
 void gofalse(int loopnumber);
 void mklabel(int loopnumber);
 void golabel(int looknumber);
+void cmp(int relop, int type, char *aux, char *acc);
