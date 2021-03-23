@@ -1,7 +1,7 @@
 /**@<mypas.c>::**/
 
 /**
- * This is the the MyPas Language Compiler 
+ * This is the MyPas Language Compiler 
  * it was developed by:
  * 
  * Daniel Hideki Kawabata

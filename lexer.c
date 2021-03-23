@@ -1,7 +1,7 @@
 /**@<lexer.c>::**/
 
 /**
- * This is the lexical analyzer of the MyPas Language Compiler 
+ * This is the Lexical Analyzer of the MyPas Language Compiler 
  * it was developed by:
  * 
  * Daniel Hideki Kawabata
